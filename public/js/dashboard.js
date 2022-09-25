@@ -1,61 +1,39 @@
-// const newFormHandler = async (event) => {
-//   event.preventDefault();
-
-//   const name = document.querySelector('#project-name').value.trim();
-//   const needed_funding = document.querySelector('#project-funding').value.trim();
-//   const description = document.querySelector('#project-desc').value.trim();
-
-//   if (name && needed_funding && description) {
-//     const response = await fetch(`/api/projects`, {
-//       method: 'POST',
-//       body: JSON.stringify({ name, needed_funding, description }),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-
-//     if (response.ok) {
-//       document.location.replace('/profile');
-//     } else {
-//       alert('Failed to create project');
-//     }
-//   }
-// };
-
-function ButtonHandler (event)
+function UpdateButtonHandler(event)
 {
 	if (event.target.hasAttribute('data-id'))
 	{
 		const id = event.target.getAttribute('data-id');
-
-		if (event.target.hasAttribute('btn-update')) UpdateButtonHandler (id);
-		else if (event.target.hasAttribute('btn-delete')) DeleteButtonHandler (id);
-		else if (event.target.hasAttribute('btn-create')) CreateButtonHandler ();
+		document.location.replace(`/update/${id}`);
 	}
 }
 
-function UpdateButtonHandler (id)
+async function DeleteButtonHandler(event)
 {
-	document.location.replace(`/update/${id}`);
+	if (event.target.hasAttribute('data-id'))
+	{
+		const id = event.target.getAttribute('data-id');
+		const response = await fetch(`/api/blogPosts/${id}`, { method: 'DELETE' });
+
+		if (response.ok) document.location.replace('/dashboard');
+		else alert('Failed to delete project');
+	}
 }
 
-async function DeleteButtonHandler (id)
-{
-	const response = await fetch(`/api/blogPosts/${id}`, { method: 'DELETE' });
-
-	if (response.ok) document.location.replace('/dashboard');
-	else alert('Failed to delete project');
-}
-
-function CreateButtonHandler ()
+function CreateButtonHandler()
 {
 	document.location.replace(`/create`);
 }
 
-// document
-//   .querySelector('.new-project-form')
-//   .addEventListener('submit', newFormHandler);
+function AddButtons()
+{
+	const updateButtons = document.querySelectorAll(".updateButton");
+	for (let i = 0; i < updateButtons.length; i++) updateButtons[i].addEventListener("click", UpdateButtonHandler);
+	
+	const deleteButtons = document.querySelectorAll(".deleteButton");
+	for (let i = 0; i < deleteButtons.length; i++) deleteButtons[i].addEventListener("click", DeleteButtonHandler);
 
-document
-  .querySelector('.project-list')
-  .addEventListener('click', ButtonHandler);
+	const createButton = document.querySelector(".createButton");
+	createButton.addEventListener("click", CreateButtonHandler);
+}
+
+AddButtons();

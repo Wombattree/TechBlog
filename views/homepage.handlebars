@@ -1,29 +1,17 @@
 <section class="section">
   {{#each blogPosts as |blogPost|}}
-  <div class="card">
+  <div class="card mb-5">
+    <header class="card-header">
+      <p class="card-header-title has-text-white is-size-4"><a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a></p>
+    </header>
     <div class="card-content">
-      <p class="title">
-        <a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a>
-      </p>
-      <p class="subtitle">
-        {{blogPost.body}}
-      </p>
+      <p class="subtitle is-size-6">{{blogPost.body}}</p>
     </div>
     <footer class="card-footer">
-      <p class="card-footer-item card-footer-item-override">
+      <p class="card-footer-item is-size-7">
         <span>Posted by {{blogPost.user.name}} on {{formatDate blogPost.dateCreated}}</span>
       </p>
     </footer>
   </div>
-  {{!-- 
-  <div class="card">
-    <div class="">
-      <h2><a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a></h2>
-    </div>
-    <div class="">
-      <div>{{blogPost.body}}</div>
-      <div>Posted by {{blogPost.user.name}} on {{formatDate blogPost.dateCreated}}</div>
-    </div>
-  </div> --}}
   {{/each}}
 </section>

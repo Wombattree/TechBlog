@@ -1,29 +1,42 @@
-<div class="text-center">
-  <h2>{{title}}</h2>
-  <p>{{body}}</p>
-  <p>Posted by {{user.name}} on {{formatDate dateCreated}}</p>
+<section class="section">
+  <div class="card mb-5">
+    <header class="card-header">
+      <p class="card-header-title has-text-white is-size-4">{{title}}</a></p>
+    </header>
+    <div class="card-content">
+      <p class="subtitle is-size-6">{{body}}</p>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item is-size-7">
+        <span>Posted by {{user.name}} on {{formatDate dateCreated}}</span>
+      </p>
+    </footer>
+  </div>
 
   {{#if loggedIn}}
-  <form class="form new-comment-form">
-      <div class="form-group">
-        <textarea class="form-input" id="comment-desc" name="comment-desc" placeholder="Leave a new comment!"></textarea>
-      </div>
-      
-      <div class="form-group">
-        <button type="submit" id="finishedbutton" class="btn btn-primary">Create comment</button>
-      </div>
-      
+  <div class="card mb-5">
+    <div class="card-content">
+      <form class="form new-comment-form">
+        <div class="form-group">
+          <textarea class="textarea" rows="2" id="comment-desc" name="comment-desc" placeholder="Leave a comment"></textarea>
+        </div>
+        <div class="form-group mt-2">
+          <button type="submit" id="finishedbutton" class="button is-dark">Create comment</button>
+        </div>
     </form>
+    </div>
+  </div>
   {{/if}}
 
   {{#each comments as |comment|}}
-  <div>
-    <div>Posted by {{comment.user.name}} on {{formatDate dateCreated}}</div>
-    <div>{{comment.body}}</div>
+  <div class="card mb-5">
+    <div class="card-content">
+      <div class="is-size-7">Posted by {{comment.user.name}} on {{formatDate dateCreated}}</div>
+      <div class="mt-2">{{comment.body}}</div>
+    </div>
   </div>
   {{/each}}
-</div>
-
+</section>
 {{#if loggedIn}}
 <script src="/js/createComment.js"></script>
 {{/if}}

@@ -22,6 +22,15 @@ async function UpdateButtonHandler (event)
 	}
 }
 
+function CancelButtonHandler()
+{
+	document.location.replace(`/dashboard`);
+}
+
 document
   .querySelector('#finishedbutton')
   .addEventListener('click', UpdateButtonHandler);
+
+document
+  .querySelector('#cancelButton')
+  .addEventListener('click', CancelButtonHandler);

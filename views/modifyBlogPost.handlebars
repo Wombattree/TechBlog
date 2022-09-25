@@ -1,26 +1,33 @@
-<div class="row mt-4">
-  <div class="col-md-6">
-    {{#if createNewBlogPost}}
-    <h3>Create a new blog post:</h3>
-    {{else}}
-    <h3>Update this blog post:</h3>
-    {{/if}}
+<section class="section">
+	<div class="card mb-5">
+		<div class="card-content">
+			<header class="card-header mb-5">
+				<p class="card-header-title has-text-white is-size-4">
+				{{#if createNewBlogPost}} Create a new blog post:
+				{{else}} Update this blog post:{{/if}}
+				</p>
+			</header>
 
-    <form class="form new-post-form">
-      <div class="form-group">
-        <input class="form-input" type="text" id="post-name" name="post-name" {{#unless createNewBlogPost}}value='{{title}}'{{/unless}}/>
-      </div>
-      <div class="form-group">
-        <textarea class="form-input" id="post-desc" name="post-desc">{{#unless createNewBlogPost}}{{body}}{{/unless}}</textarea>
-      </div>
-      
-      <div class="form-group">
-        <button type="submit" id="finishedbutton" class="btn btn-primary">{{#if createNewBlogPost}}Create{{else}}Update{{/if}}</button>
-      </div>
-      
-    </form>
-  </div>
-</div>
+			<div class="card mb-5">
+				<div class="card-content">
+					<form class="form new-comment-form">
+						<div class="form-group">
+							<input class="input mb-5 is-size-4" type="text" id="post-name" name="post-name" placeholder="Title" {{#unless createNewBlogPost}}value="{{title}}"{{/unless}}>
+						</div>
+						<div class="form-group">
+							<textarea class="textarea" rows="15" id="post-desc" name="post-desc" placeholder="Body">{{#unless createNewBlogPost}}{{body}}{{/unless}}</textarea>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<footer class="card-footer remove-border-line">
+				<button class="button is-dark" id="finishedbutton">{{#if createNewBlogPost}}Create post{{else}}Update post{{/if}}</button>
+				<button class="button is-dark ml-5" id="cancelButton">Cancel</button>
+			</footer>
+		</div>
+	</div>
+</section>
 
 {{#if createNewBlogPost}}
 <script src="/js/createBlogPost.js"></script>

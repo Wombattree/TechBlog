@@ -1,6 +1,26 @@
-.card-footer-item-override
+.card-header
 {
-  	padding: 0;
-	padding-left: 1.125rem;
+	background-color: #363636;
+}
+
+.card-header-title
+{
+	padding: 1rem 1.5rem;
+}
+
+.card-header-title a
+{
+	color: white;
+}
+
+.card-footer-item
+{
+  	padding: 0.5rem;
+	padding-left: 1.5rem;
 	display: block;
+}
+
+.remove-border-line
+{
+	border-top: 0;
 }
