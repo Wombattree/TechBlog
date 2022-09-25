@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12 project-list">
+    <h3>Your Current Blog Posts:</h3>
+
+    {{#each blogPosts as |blogPost|}}
+    <div class="row mb-2">
+      <div class="col-md-10">
+        <h4><a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a></h4>
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-sm btn-info" data-id="{{blogPost.id}}" btn-update="true">UPDATE</button>
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-sm btn-danger" data-id="{{blogPost.id}}" btn-delete="true">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+
+    <button class="btn btn-md" data-id="" btn-create="true">Create new blog post</button>
+    {{!-- <h3><a href="/modifyBlogPost/{{blogPost.id}}">Create new blog post</a></h3> --}}
+  </div>
+</div>
+
+<script src="./js/dashboard.js"></script>

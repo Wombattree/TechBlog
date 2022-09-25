@@ -1,0 +1,29 @@
+<div class="row mt-4">
+  <div class="col-md-6">
+    {{#if createNewBlogPost}}
+    <h3>Create a new blog post:</h3>
+    {{else}}
+    <h3>Update this blog post:</h3>
+    {{/if}}
+
+    <form class="form new-project-form">
+      <div class="form-group">
+        <input class="form-input" type="text" id="project-name" name="project-name" {{#unless createNewBlogPost}}value='{{title}}'{{/unless}}/>
+      </div>
+      <div class="form-group">
+        <textarea class="form-input" id="project-desc" name="project-desc"> {{#unless createNewBlogPost}}{{body}}{{/unless}}</textarea>
+      </div>
+      
+      <div class="form-group">
+        <button type="submit" id="finishedbutton" class="btn btn-primary">{{#if createNewBlogPost}}Create{{else}}Update{{/if}}</button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+{{#if createNewBlogPost}}
+<script src="/js/createBlogPost.js"></script>
+{{else}}
+<script src="/js/updateBlogPost.js"></script>
+{{/if}}
