@@ -2,8 +2,8 @@ async function UpdateButtonHandler (event)
 {
 	event.preventDefault();
 
-	const title = document.querySelector('#project-name').value.trim();
-	const body = document.querySelector('#project-desc').value.trim();
+	const title = document.querySelector('#post-name').value.trim();
+	const body = document.querySelector('#post-desc').value.trim();
 
 	const pathSplit = document.location.pathname.split("/");
 	const id = pathSplit[pathSplit.length - 1];

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { BlogPost, User } = require('../models');
+const { BlogPost, User, Comment } = require('../models');
 const redirectToLogin = require('../utils/redirectToLogin');
 
 router.get('/', async (req, res) => 
@@ -36,10 +36,14 @@ router.get('/blogPost/:id', async (req, res) => {
     const blogPostData = await BlogPost.findByPk(req.params.id, { include: [{ model: User, attributes: ["name"] }],});
     const blogPost = blogPostData.get({ plain: true });
 
+	const commentData = await Comment.findAll({ where: { blogPostId: req.params.id }, include: [{ model: User, attributes: ["name"] }]});
+	const comments = commentData.map((data) => data.get({ plain: true }));
+
     res.render('blogPost', 
 	{
 		pageTitle: "The Tech Blog",
 		...blogPost,
+		comments,
 		loggedIn: req.session.loggedIn
     });
   } 

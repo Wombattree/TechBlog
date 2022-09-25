@@ -6,12 +6,12 @@
     <h3>Update this blog post:</h3>
     {{/if}}
 
-    <form class="form new-project-form">
+    <form class="form new-post-form">
       <div class="form-group">
-        <input class="form-input" type="text" id="project-name" name="project-name" {{#unless createNewBlogPost}}value='{{title}}'{{/unless}}/>
+        <input class="form-input" type="text" id="post-name" name="post-name" {{#unless createNewBlogPost}}value='{{title}}'{{/unless}}/>
       </div>
       <div class="form-group">
-        <textarea class="form-input" id="project-desc" name="project-desc"> {{#unless createNewBlogPost}}{{body}}{{/unless}}</textarea>
+        <textarea class="form-input" id="post-desc" name="post-desc">{{#unless createNewBlogPost}}{{body}}{{/unless}}</textarea>
       </div>
       
       <div class="form-group">
