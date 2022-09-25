@@ -1,7 +1,7 @@
 <div class="text-center">
   <h2>{{title}}</h2>
   <p>{{body}}</p>
-  <p>Created by {{user.name}} on {{formatDate dateCreated}}</p>
+  <p>Posted by {{user.name}} on {{formatDate dateCreated}}</p>
 
   {{#if loggedIn}}
   <form class="form new-comment-form">
@@ -18,7 +18,7 @@
 
   {{#each comments as |comment|}}
   <div>
-    <div>Created by {{comment.user.name}} on {{formatDate dateCreated}}</div>
+    <div>Posted by {{comment.user.name}} on {{formatDate dateCreated}}</div>
     <div>{{comment.body}}</div>
   </div>
   {{/each}}

@@ -4,36 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
+  <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      
-      <h1>{{pageTitle}}</h1>
+  <nav class="navbar has-background-dark p-2 has-text-weight-semibold is-transparent" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item has-text-white is-size-3">{{pageTitle}}</div>
 
-      <nav>
-        <a href="/">Home</a>
-        {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <button class="no-button" id="logout">Logout</button>
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
+      <a role="button"
+        class="navbar-burger has-background-dark is-transparent has-text-white"
+        id="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
-  {{#if loggedIn}}<script src="/js/logout.js"></script>{{/if}}
+    <div id="navbar" class="navbar-menu has-background-dark is-transparent has-text-white">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <button class="button navbar-item has-text-white has-background-dark is-size-5 mr-2" id="home">Home</button>
+          {{#if loggedIn}}
+          <button class="button navbar-item has-text-white has-background-dark is-size-5 mr-2" id="dashboard">Dashboard</button>
+          <button class="button navbar-item has-text-white has-background-dark is-size-5 mr-2" id="logout">Logout</button>
+          {{else}}
+          <button class="button navbar-item has-text-white has-background-dark is-size-5 mr-2" id="login">Login</button>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+{{{body}}}
+<script src="/js/navigation.js"></script>
 </body>
-
 </html>

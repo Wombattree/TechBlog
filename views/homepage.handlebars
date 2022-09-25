@@ -1,11 +1,29 @@
-{{#each blogPosts as |blogPost|}}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2><a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a></h2>
+<section class="section">
+  {{#each blogPosts as |blogPost|}}
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        <a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a>
+      </p>
+      <p class="subtitle">
+        {{blogPost.body}}
+      </p>
+    </div>
+    <footer class="card-footer">
+      <p class="card-footer-item card-footer-item-override">
+        <span>Posted by {{blogPost.user.name}} on {{formatDate blogPost.dateCreated}}</span>
+      </p>
+    </footer>
   </div>
-  <div class="col-md-7">
-    <p>{{blogPost.body}}</p>
-    <p>By: {{blogPost.user.name}}</p>
-  </div>
-</div>
-{{/each}}
+  {{!-- 
+  <div class="card">
+    <div class="">
+      <h2><a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a></h2>
+    </div>
+    <div class="">
+      <div>{{blogPost.body}}</div>
+      <div>Posted by {{blogPost.user.name}} on {{formatDate blogPost.dateCreated}}</div>
+    </div>
+  </div> --}}
+  {{/each}}
+</section>
