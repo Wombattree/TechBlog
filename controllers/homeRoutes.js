@@ -111,7 +111,7 @@ router.get('/update/:id', redirectToLogin, async (req, res) =>
 router.get('/login', (req, res) => 
 {
   	if (req.session.loggedIn) res.redirect('/dashboard');
-	else res.render('login');
+	else res.render('login', { pageTitle: "The Tech Blog", loggedIn: false });
 });
 
 module.exports = router;

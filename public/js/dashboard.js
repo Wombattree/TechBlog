@@ -14,7 +14,7 @@ async function DeleteButtonHandler(event)
 		const id = event.target.getAttribute('data-id');
 		const response = await fetch(`/api/blogPosts/${id}`, { method: 'DELETE' });
 
-		if (response.ok) document.location.replace('/dashboard');
+		if (response.ok) location.reload();
 		else alert('Failed to delete project');
 	}
 }
